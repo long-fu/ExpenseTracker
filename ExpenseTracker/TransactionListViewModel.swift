@@ -67,7 +67,7 @@ final class TransactionListViewModel: ObservableObject {
     
     func accumulateTransactions() -> TransactionPrefixSum {
         print("accumulateTransactions")
-        guard transtaions.isEmpty else {
+        guard !transtaions.isEmpty else {
             return []
         }
         let today = "02/17/2022".dateParsed()
@@ -87,6 +87,7 @@ final class TransactionListViewModel: ObservableObject {
             print(date.formatted(),"dailtTotal:", dailyTotal, "sum:", sum)
         }
         
+        print(cumulativeSum)
         return cumulativeSum
     }
 }

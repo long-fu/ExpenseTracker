@@ -12,7 +12,7 @@ struct ContentView: View {
     
     @EnvironmentObject var transactionListVM: TransactionListViewModel
     
-//    var demoData:[Double] = [8,2,4,6,12,9,2]
+    var demoData:[Double] = [8,2,4,6,12,9,2]
     
     var body: some View {
         NavigationView {
@@ -24,10 +24,11 @@ struct ContentView: View {
                         .bold()
                     
                     let data = transactionListVM.accumulateTransactions()
+                    
                     let totalExpenses = data.last?.1 ?? 0
                     CardView {
                         VStack {
-                            ChartLabel(totalExpenses.formatted(.currency(code: "USD")),type: .title)
+                            ChartLabel(totalExpenses.formatted(.currency(code: "USD")),type: .title, format: "%0.01f")
                             LineChart()
                         }
                         .background(Color.systemBackground)
